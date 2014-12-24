@@ -15,8 +15,8 @@ Guidelines:
 - Use existing tools (SSH, Bash). After all, Bash is the JavaScript of system programming
 - Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules (compiled or interpreted)
 - Imperative programming (code as code) is the other half of declarative programming (code as data)
-- And lastly, remember my 12-Rule App Manifesto at itjumpstart.net
+- And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
+
+To run, type encore-cmd /path/of/cmdfile
 
 Your feedback is important and very much welcome.
-
-Please do not hesitate to contact me.
