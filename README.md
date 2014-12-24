@@ -17,6 +17,8 @@ Guidelines:
 - Imperative programming (code as code) is the other half of declarative programming (code as data)
 - And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
 
+You must have Go installed.
+
 To run, type encore-cmd /path/of/cmdfile
 
 Your feedback is important and very much welcome.
