@@ -22,3 +22,5 @@ You must have Go installed.
 To run, type encore-cmd /path/of/cmdfile
 
 Your feedback is important and very much welcome.
+
+License: MIT
