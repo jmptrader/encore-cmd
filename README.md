@@ -2,19 +2,20 @@ encore-cmd is meant to explore a script-based configuration management tool.
 
 It uses a cmdfile akin to Dockerfile syntax. However, it only provides a limited functionality since we want to separate configuration management from system administration tasks.
 
-A cmdfile looks like the following:
+encore-cmd follows the Unix philosophy of building single-purpose tools.
 
-GO hostenv PATH
-ENV MYVARIABLE myvar
-GO getenv MYVARIABLE
+Guidelines:
 
-RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
-RUN touch /etc/apt/sources.list
-RUN echo "deb http://nginx.org/packages/mainline/debian/ wheezy nginx" > /etc/apt/sources.list
-RUN apt-get update 
-RUN apt-get install -y nginx
-RUN rm -rf /var/lib/apt/lists/*
+Separate data from functions (ToDo: data as JSON -> feed to Mustache template -> Run merged template as task)
+Embrace script because script serves as an interface (not abstraction)
+Code as data (script serves as data in the form of cmdfile)
+Simple syntax (like Dockerfile)
+Uses a push model (test your cmdfile on your local computer, then push it to remote machines via SSH)
+Tasks alter machine state a la SQL DML (ad hoc, read only commands like SQL query must be separate from cmdfile)
+Use existing tools (SSH, Bash). After all, Bash is the JavaScript of system programming
+Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules (compiled or interpreted)
+Imperative programming (scripting) must be balanced with declarative programming of Ansible, Salt, etc
+And lastly, remember my 12-Rule App Manifesto at itjumpstart.net
+Your feedback is important and very much welcome.
 
-To run,
-
-encore-cmd /path/to/cmdfile
+Please do not hesitate to contact me.
