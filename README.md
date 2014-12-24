@@ -14,7 +14,7 @@ Guidelines:
 - Tasks alter machine state a la SQL DML (ad hoc, read only commands like SQL query must be separate from cmdfile)
 - Use existing tools (SSH, Bash). After all, Bash is the JavaScript of system programming
 - Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules (compiled or interpreted)
-- Imperative programming (scripting) must be balanced with declarative programming of Ansible, Salt, etc
+- Imperative programming (code as code) is the other half of declarative programming (code as data)
 - And lastly, remember my 12-Rule App Manifesto at itjumpstart.net
 
 Your feedback is important and very much welcome.
