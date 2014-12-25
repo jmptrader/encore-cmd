@@ -30,7 +30,7 @@ If you go the route of abstraction (like popular CM tools today), you are foreve
 encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error.
 
 Cmdfile
-=======
+-------
 
 Cmdfile is the only argument required for now
 Cmdfile takes inspiration from Dockerfile
@@ -40,7 +40,7 @@ Cmdfile is for humans, not machines
 Cmdfile is simple and intuitive (no YAML)
 
 Limitations of cmdfile
-======================
+----------------------
 
 It is not a shell (so no variable declaration and substitution)
 No pipe commands
@@ -53,7 +53,7 @@ encore-cmd uses the excellent Go runtime and even borrows some syntax from Golan
 To run, type encore-cmd /path/of/cmdfile
 
 ToDo
-====
+----
 
 - Variable substitution in cmdfile (using Mustache template for example)
 - Modules (a la Webmin)
@@ -65,4 +65,7 @@ ToDo
 
 Your feedback is important and very much welcome.
 
-License: MIT
+License
+-------
+
+MIT
