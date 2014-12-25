@@ -32,21 +32,21 @@ encore-cmd does not aim to replace your favorite shell. Rather, it adds error ha
 Cmdfile
 -------
 
-Cmdfile is the only argument required for now
-Cmdfile takes inspiration from Dockerfile
-Cmdfile tasks must be sequential (no loops or conditionals)
-Cmdfile tasks are Bash commands and external programs
-Cmdfile is for humans, not machines
-Cmdfile is simple and intuitive (no YAML)
+- Cmdfile is the only argument required for now
+- Cmdfile takes inspiration from Dockerfile
+- Cmdfile tasks must be sequential (no loops or conditionals)
+- Cmdfile tasks are Bash commands and external programs
+- Cmdfile is for humans, not machines
+- Cmdfile is simple and intuitive (no YAML)
 
 Limitations of cmdfile
 ----------------------
 
-It is not a shell (so no variable declaration and substitution)
-No pipe commands
-No backslash (commands must be put on each line)
-No &&
-No cd (Instead, use GO chdir directoryname)
+- It is not a shell (so no variable declaration and substitution)
+- No pipe commands
+- No backslash (commands must be put on each line)
+- No &&
+- No cd (Instead, use GO chdir directoryname)
 
 encore-cmd uses the excellent Go runtime and even borrows some syntax from Golang os/exec package.
 
