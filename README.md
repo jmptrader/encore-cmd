@@ -6,15 +6,18 @@ encore-cmd follows the Unix philosophy of building single-purpose tools.
 
 Guidelines:
 
-- Separate data from functions (ToDo: data as JSON -> feed to Mustache template -> Run merged template as task)
+- This program is meant to promote interface, not abstraction
+- As such, my choice of shell is Bash
+- If you do not like Bash, a separate community of cmdfile need to fill that void
+- Separate data from functions
 - Embrace script because script serves as an interface (not abstraction)
 - Code as data (script serves as data in the form of cmdfile)
 - Simple syntax (like Dockerfile)
-- Uses a push model (test your cmdfile on your local computer, then push it to remote machines via SSH)
-- Tasks alter machine state a la SQL DML (ad hoc, read only commands like SQL query must be separate from cmdfile)
+- Uses a push model (test cmdfile on local computer, then push it to remote machines via SSH)
+- Cmdfile tasks alter machine state (not ad hoc query commands)
 - Use existing tools (SSH, Bash). After all, Bash is the JavaScript of system programming
-- Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules (compiled or interpreted)
-- Imperative programming (code as code) is the other half of declarative programming (code as data)
+- Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules
+- Imperative programming (code as code) complements declarative programming (code as data)
 - And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
 
 You must have Go installed.
