@@ -8,14 +8,13 @@ Guidelines:
 
 - This program is meant to promote interface, not abstraction
 - As such, my choice of shell is Bash
-- If you do not like Bash, a separate community of cmdfile need to fill that void
-- Separate data from functions
+- Bash is the JavaScript of system programming (https://github.com/progrium/bashstyle)
+- If you do not like Bash, a separate community of cmdfile needs to fill that void
 - Embrace script because script serves as an interface (not abstraction)
 - Code as data (script serves as data in the form of cmdfile)
 - Simple syntax (like Dockerfile)
 - Uses a push model (test cmdfile on local computer, then push it to remote machines via SSH)
 - Cmdfile tasks alter machine state (not ad hoc query commands)
-- Use existing tools (SSH, Bash). After all, Bash is the JavaScript of system programming
 - Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules
 - Imperative programming (code as code) complements declarative programming (code as data)
 - And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
