@@ -18,10 +18,50 @@ Guidelines:
 - Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules
 - Imperative programming (code as code) complements declarative programming (code as data)
 - And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
+- This program has been tested under Turnkey Linux 13.0 Core / Debian 7.2 Wheezy
 
-You must have Go installed.
+Why script?
+
+Short answer: user experience.
+Long answer: user experience plus standardization of shell scripting in the form of cmdfile (just like Dockerfile).
+
+If you go the route of abstraction (like popular CM tools today), you are forever chasing a moving target (AWS API, differences between DEB and RPM, APIs among RDBMS, NoSQL and a myriad host of software).
+
+encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error.
+
+Cmdfile
+=======
+
+Cmdfile is the only argument required for now
+Cmdfile takes inspiration from Dockerfile
+Cmdfile tasks must be sequential (no loops or conditionals)
+Cmdfile tasks are Bash commands and external programs
+Cmdfile is for humans, not machines
+Cmdfile is simple and intuitive (no YAML)
+
+Limitations of cmdfile
+======================
+
+It is not a shell (so no variable declaration and substitution)
+No pipe commands
+No backslash (commands must be put on each line)
+No &&
+No cd (Instead, use GO chdir directoryname)
+
+encore-cmd uses the excellent Go runtime and even borrows some syntax from Golang os/exec package.
 
 To run, type encore-cmd /path/of/cmdfile
+
+ToDo
+====
+
+- Variable substitution in cmdfile (using Mustache template for example)
+- Modules (a la Webmin)
+- Comprehensive test suite
+- SSH key management on master node
+- Seamless file transfer from master to children nodes (using scp)
+- Tight integration between master node and encore-cmd on children nodes
+- Documentation
 
 Your feedback is important and very much welcome.
 
