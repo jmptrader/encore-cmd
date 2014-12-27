@@ -92,6 +92,11 @@ Parallel SSH execution
 
 Run encore-cmd at multiple command prompt
 
+Tested
+------
+
+encore-cmd can also be used to manage Debian-based servers from Windows (tested using Git Bash from GitHub). However, the output is not color-coded unlike with Linux-based distros.
+
 
 ToDo
 ----
