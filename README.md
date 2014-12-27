@@ -90,7 +90,20 @@ encore-cmd cmdlocal.txt
 Parallel SSH execution
 ----------------------
 
-Run encore-cmd at multiple command prompt
+Run encore-cmd at multiple command prompt. The above example runs SSH commands in series. To do this in parallel, you have to put the following in a separate cmdfile, then run it.
+
+- #cmdlocal2.txt
+- RUN scp cmdremote.txt root@192.168.1.103:/home
+- RUN ssh root@192.168.1.103 ./encore-cmd /home/cmdremote.txt
+
+To run it in parallel, open two different prompts, then type
+
+- encore-cmd cmdlocal.txt
+
+On another command prompt, type
+
+- encore-cmd cmdlocal2.txt
+
 
 Tested
 ------
