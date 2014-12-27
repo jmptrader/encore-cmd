@@ -67,16 +67,16 @@ Example
 
 Assuming you have two cmdfiles on your local computer (cmdlocal.txt)
 
-RUN scp cmdremote.txt root@192.168.1.102:/home \n
-RUN ssh root@192.168.1.102 ./encore-cmd /home/cmdremote.txt
+- RUN scp cmdremote.txt root@192.168.1.102:/home
+- RUN ssh root@192.168.1.102 ./encore-cmd /home/cmdremote.txt
 
-RUN scp cmdremote.txt root@192.168.1.103:/home
-RUN ssh root@192.168.1.103 ./encore-cmd /home/cmdremote.txt
+- RUN scp cmdremote.txt root@192.168.1.103:/home
+- RUN ssh root@192.168.1.103 ./encore-cmd /home/cmdremote.txt
 
 
 Here is other cmdfile (cmdremote.txt).
 
-RUN uptime
+- RUN uptime
 
 
 Like Fabric (but without Python)
