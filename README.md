@@ -60,7 +60,7 @@ go get github.com/ibmendoza/encore-cmd
 
 To run, type encore-cmd /path/of/cmdfile
 
-encore-cmd can work on your local computer or remote computer via SSH. For seamless remote operation, running an SSH agent is recommended.
+encore-cmd can work on your local computer or remote computer via SSH. For seamless remote operation, running an SSH agent is recommended. Of course, this assumes that the remote computer has encore-cmd already installed at the folder of your own choosing.
 
 Example
 -------
