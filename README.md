@@ -25,7 +25,7 @@ Why script?
 Short answer: user experience.
 Long answer: user experience plus standardization of shell scripting in the form of cmdfile (just like Dockerfile).
 
-If you go the route of abstraction (like popular CM tools today), you are forever chasing a moving target (AWS API, differences between DEB and RPM, APIs among RDBMS, NoSQL and a myriad host of software).
+If you go the route of abstraction, you are forever chasing a moving target (APIs of public cloud providers, differences between DEB and RPM, APIs among RDBMS, NoSQL and a myriad host of software).
 
 encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error.
 
@@ -47,6 +47,7 @@ Limitations of cmdfile
 - No backslash (commands must be put on each line)
 - No &&
 - No cd (Instead, use GO chdir directoryname)
+- No eval
 
 encore-cmd uses the excellent Go runtime and even borrows some syntax from Golang os/exec package.
 
@@ -56,7 +57,7 @@ ToDo
 ----
 
 - Variable substitution in cmdfile (using Mustache template for example)
-- Modules (a la Webmin)
+- Modules (a la Webmin but CLI-based)
 - Comprehensive test suite
 - SSH key management on master node
 - Seamless file transfer from master to children nodes (using scp)
