@@ -51,6 +51,13 @@ Limitations of cmdfile
 
 encore-cmd uses the excellent Go runtime and even borrows some syntax from Golang os/exec package.
 
+Installation
+------------
+
+You must have Go installed.
+
+go get github.com/ibmendoza/encore-cmd
+
 To run, type encore-cmd /path/of/cmdfile
 
 ToDo
@@ -59,7 +66,7 @@ ToDo
 - Variable substitution in cmdfile (using Mustache template for example)
 - Modules (a la Webmin but CLI-based)
 - Comprehensive test suite
-- Documentation
+- Wiki documentation
 
 Your feedback is important and very much welcome.
 
