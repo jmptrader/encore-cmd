@@ -59,9 +59,6 @@ ToDo
 - Variable substitution in cmdfile (using Mustache template for example)
 - Modules (a la Webmin but CLI-based)
 - Comprehensive test suite
-- SSH key management on master node
-- Seamless file transfer from master to children nodes (using scp)
-- Tight integration between master node and encore-cmd on children nodes
 - Documentation
 
 Your feedback is important and very much welcome.
