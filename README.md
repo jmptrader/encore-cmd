@@ -65,26 +65,18 @@ encore-cmd can work on your local computer or remote computer via SSH. For seaml
 Example
 -------
 
-Assuming you have two cmdfiles on your local computer (cmdlocal.txt and cmdremote.txt)
-
-#cmdlocal.txt
-#Run commands on two hosts in series
-
-#assumes ssh-agent is already running (eval `ssh-agent -s`)
-#scp source_file_name username@destination_host:destination_folder
+Assuming you have two cmdfiles on your local computer (cmdlocal.txt)
 
 RUN scp cmdremote.txt root@192.168.1.102:/home
 RUN ssh root@192.168.1.102 ./encore-cmd /home/cmdremote.txt
 
 RUN scp cmdremote.txt root@192.168.1.103:/home
 RUN ssh root@192.168.1.103 ./encore-cmd /home/cmdremote.txt
-#end of cmdfile
 
-Here is other cmdfile.
 
-#cmdremote.txt
+Here is other cmdfile (cmdremote.txt).
+
 RUN uptime
-#end of cmdfile
 
 
 Like Fabric (but without Python)
