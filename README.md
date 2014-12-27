@@ -103,7 +103,6 @@ ToDo
 
 - Variable substitution in cmdfile (using Mustache template for example)
 - Modules (a la Webmin but CLI-based)
-- Comprehensive test suite
 - Wiki documentation
 
 Your feedback is important and very much welcome.
