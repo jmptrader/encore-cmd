@@ -108,7 +108,7 @@ On another command prompt, type
 Tested
 ------
 
-encore-cmd can also be used to manage Debian and Ubuntu servers from Windows (tested using Git Bash from GitHub). However, the output is not color-coded unlike with Linux-based distros. Needs testing from the community for RPM-based servers. My setup is just Virtual Box and Turnkey Linux (no need for Vagrant which is just another abstraction). Remember: use interface, not abstraction.
+encore-cmd can be used to configure Debian and Ubuntu servers from Windows (tested using Git Bash from GitHub). However, the output is not color-coded unlike with Linux-based distros. Needs testing from the community for RPM-based servers. My setup is just Virtual Box and Turnkey Linux (no need for Vagrant which is just another abstraction). Remember: use interface, not abstraction.
 
 
 ToDo
