@@ -1,4 +1,4 @@
-encore-cmd is meant to explore a script-like and SSH-based configuration management (CM) tool using a subset of Bash-like syntax. It aims to meet the common 80% of use cases that are relevant in CM without the learning curve of Bash or any shell scripting. However, if you want to use shell, encore-cmd lets you do that by calling your script in a cmdfile.
+encore-cmd is meant to explore a script-like and SSH-based configuration management (CM) tool using a subset of Bash-like syntax. It aims to meet the common 80% of use cases that are relevant in CM using your favorite shell (in this case, it is Bash). However, if you want to use other shell, encore-cmd lets you do that by calling your script in a cmdfile.
 
 It uses a cmdfile akin to Dockerfile syntax. However, it only provides a limited functionality since we want to separate configuration management from system administration tasks.
 
@@ -18,7 +18,13 @@ Why script-like?
 
 Answer: Syntax. Because developers are familiar with the syntax of script (command followed by optional arguments), a script-based CM would be more intuitive rather than YAML-based or any other syntax for that matter.
 
-encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error.
+encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error. 
+
+Moreover, it lets you separate which tasks can be automated on your local computer or on the remote machines you want to configure. For example, you may download a hefty file on your local computer and then simply push it to your remote machines. That way, you do not have to use curl or wget on each of those remote computers.
+
+Why Bash?
+
+Because it is the JavaScript of system programming (https://github.com/progrium/bashstyle). Bash is like SQL. It lets you interface with the machine, rather than build a leaky abstraction like ORM.
 
 Why SSH?
 
