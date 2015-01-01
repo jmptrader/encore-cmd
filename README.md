@@ -1,4 +1,4 @@
-encore-cmd is meant to explore a script-based configuration management tool.
+encore-cmd is meant to explore a script-like and SSH-based configuration management (CM) tool using a subset of Bash-like syntax. It aims to meet the common 80% of use cases that are relevant in CM without the learning curve of Bash or any shell scripting. However, if you want to use shell, encore-cmd lets you do that by calling your script in a cmdfile.
 
 It uses a cmdfile akin to Dockerfile syntax. However, it only provides a limited functionality since we want to separate configuration management from system administration tasks.
 
@@ -6,28 +6,32 @@ encore-cmd follows the Unix philosophy of building single-purpose tools.
 
 Guidelines:
 
-- This program is meant to promote interface, not abstraction
-- As such, my choice of shell is Bash
-- Bash is the JavaScript of system programming (https://github.com/progrium/bashstyle)
-- If you do not like Bash, a separate community of cmdfile needs to fill that void
-- Embrace script because script serves as an interface (not abstraction)
 - Code as data (script serves as data in the form of cmdfile)
 - Simple syntax (like Dockerfile)
 - Uses a push model (test cmdfile on local computer, then push it to remote machines via SSH)
 - Cmdfile tasks alter machine state (not ad hoc query commands)
 - Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules
-- Imperative programming (code as code) complements declarative programming (code as data)
 - And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
 - This program has been tested under Turnkey Linux 13.0 Core / Debian 7.2 Wheezy
 
-Why script?
+Why script-like?
 
-Short answer: user experience.
-Long answer: user experience plus standardization of shell scripting in the form of cmdfile (just like Dockerfile).
-
-If you go the route of abstraction, you are forever chasing a moving target (APIs of public cloud providers, differences between DEB and RPM, APIs among RDBMS, NoSQL and a myriad host of software).
+Answer: Syntax. Because developers are familiar with the syntax of script (command followed by optional arguments), a script-based CM would be more intuitive rather than YAML-based or any other syntax for that matter.
 
 encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error.
+
+Why SSH?
+
+Because it is secure and easy to setup.
+
+Why yet another tool?
+
+- you want a simple and developer-friendly configuration management tool
+- you are not the target market of Ansible, Chef, Puppet, etc
+- you want to configure just a dozen or so machines
+- you love the simplicity and deployment of Go binaries
+- you do not like monolithic software
+- you love the Gopher way of building single-purpose tools
 
 Cmdfile
 -------
@@ -35,8 +39,6 @@ Cmdfile
 - Cmdfile is the only argument required for now
 - Cmdfile takes inspiration from Dockerfile
 - Cmdfile tasks must be sequential (no loops or conditionals)
-- Cmdfile tasks are Bash commands and external programs
-- Cmdfile is for humans, not machines
 - Cmdfile is simple and intuitive (no YAML)
 
 Limitations of cmdfile
