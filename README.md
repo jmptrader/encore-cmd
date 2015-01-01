@@ -20,7 +20,7 @@ Answer: Syntax. Because developers are familiar with the syntax of script (comma
 
 encore-cmd does not aim to replace your favorite shell. Rather, it adds error handling line by line from your cmdfile so it would abort at the first occurrence of an error. 
 
-Moreover, it lets you separate which tasks can be automated on your local computer or on the remote machines you want to configure. For example, you may download a hefty file on your local computer and then simply push it to your remote machines. That way, you do not have to use curl or wget on each of those remote computers.
+Moreover, it lets you separate which tasks can be automated on your local computer or on the remote machines you want to configure. For example, you may download a hefty file to your local computer and then simply push it to your remote machines. That way, you do not have to use curl or wget on each of those remote computers.
 
 Why Bash?
 
