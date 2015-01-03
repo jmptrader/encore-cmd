@@ -12,7 +12,7 @@ Guidelines:
 - Cmdfile tasks alter machine state (not ad hoc query commands)
 - Keep encore-cmd as small as possible. Extraneous tasks should be relegated as modules
 - And lastly, remember my 12-Rule App Manifesto at ITJUMPSTART.NET
-- This program has been tested under Turnkey Linux 13.0 Core / Debian 7.2 Wheezy
+- This program has been tested under Turnkey Linux 13.0 Core / Debian 7.2 Wheezy and Windows 7 using Git Bash
 
 Why script-like?
 
