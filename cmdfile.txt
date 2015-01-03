@@ -19,16 +19,11 @@ RUN chmod +x cmd.sh
 RUN printenv
 RUN cp cmdfile.txt cmd3.txt
 RUN date
-# grep does not work
 RUN tar --version
 RUN gzip cmd3.txt
 #gzip: cmd3.txt.gz already exists;    not overwritten
-#RUN info gtar --executable file not found
-#ps is not supported since this is a query command, not state program
-#RUN man grep
-#make sure file exists for mv, rm, tar, gzip, etc
+RUN info gtar --executable file not found
 #RUN mv cmd3.txt.gz /home/go/cmd3.txt.gz
-#RUN quota -v (not supported)
 RUN rm cmd3.txt.gz
 #setenv not supported. Use GO setenv key value
 GO hostenv
