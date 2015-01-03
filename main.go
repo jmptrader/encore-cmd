@@ -18,6 +18,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"runtime"
 	"strings"
 )
 
@@ -45,6 +46,16 @@ func runCmd(args string) error {
 
 	splitSpace := strings.Split(args, " ")
 
+	//based on hashicorp serf
+	var shell, flag string
+	if runtime.GOOS == "windows" {
+		shell = "cmd"
+		flag = "/C"
+	} else {
+		shell = "/bin/sh"
+		flag = "-c"
+	}
+
 	var err error
 	switch splitSpace[0] {
 	case "mkdir":
@@ -52,14 +63,14 @@ func runCmd(args string) error {
 
 		//make dir only if not existing
 		if _, err := os.Stat(dir); os.IsNotExist(err) {
-			cmd := exec.Command("/bin/sh", "-c", args)
+			cmd := exec.Command(shell, flag, args)
 
 			output, err := cmd.CombinedOutput()
 			printError(err)
 			printOutput(output)
 		}
 	default:
-		cmd := exec.Command("/bin/sh", "-c", args)
+		cmd := exec.Command(shell, flag, args)
 
 		output, err := cmd.CombinedOutput()
 		printError(err)
