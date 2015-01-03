@@ -1,5 +1,3 @@
-//TODO: cat id_rsa.pub >> authorized_keys
-
 //License: MIT
 //Author: Gani Mendoza (itjumpstart.wordpress.com)
 
