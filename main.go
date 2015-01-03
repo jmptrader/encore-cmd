@@ -1,4 +1,4 @@
-//TODO:
+//TODO: cat id_rsa.pub >> authorized_keys
 
 //License: MIT
 //Author: Gani Mendoza (itjumpstart.wordpress.com)
@@ -8,14 +8,7 @@
 //Cmdfile takes inspiration from Dockerfile
 //Cmdfile tasks must be sequential (no loops or conditionals)
 //Cmdfile tasks are Bash commands and external programs
-//Cmdfile is for humans, not machines
-
-//Limitations of cmdfile
-//It is not a shell (so no variable declaration and substitution)
-//No pipe commands
-//No backslash (commands must be put on each line)
-//No &&
-//No cd (Use GO chdir directoryname)
+//Cmdfile aborts execution on first occurrence of error
 
 package main
 
@@ -49,113 +42,32 @@ func printOutput(outs []byte) {
 	}
 }
 
-func echoCmd(args []string) {
-	var cmd *exec.Cmd
-	//echo "Hello world" > echofile.txt
-	strJoin := strings.Join(args, " ")
-	if strings.Contains(strJoin, " > ") {
+func runCmd(args string) error {
+	fmt.Println(args)
 
-		slcSplit := strings.Split(strJoin, " > ")
-		idxFile := len(slcSplit) - 1
-		fmt.Println(slcSplit)
+	splitSpace := strings.Split(args, " ")
 
-		outfile, err := os.Create(slcSplit[idxFile])
-		defer outfile.Close()
+	var err error
+	switch splitSpace[0] {
+	case "mkdir":
+		dir := splitSpace[1]
 
-		if err != nil {
+		//make dir only if not existing
+		if _, err := os.Stat(dir); os.IsNotExist(err) {
+			cmd := exec.Command("/bin/sh", "-c", args)
+
+			output, err := cmd.CombinedOutput()
 			printError(err)
-			return
+			printOutput(output)
 		}
-
-		str := strings.Replace(slcSplit[0], "\"", "", 2)
-
-		cmd = exec.Command("echo", str)
-		cmd.Stdout = outfile
-
-		err = cmd.Start()
-		if err != nil {
-			printError(err)
-			return
-		}
-		cmd.Wait()
-
-	}
-
-	if strings.Contains(strJoin, " >> ") {
-
-		slcSplit := strings.Split(strJoin, " >> ")
-		idxFile := len(slcSplit) - 1
-		fmt.Println(slcSplit)
-
-		outfile, err := os.OpenFile(slcSplit[idxFile], os.O_RDWR|os.O_APPEND, 0666)
-
-		defer outfile.Close()
-
-		str := strings.Replace(slcSplit[0], "\"", "", 2)
-		_, err = outfile.WriteString(str)
-
-		if err != nil {
-			printError(err)
-			return
-		}
-
-		outfile.Sync()
-
-	} else {
-		cmd = exec.Command("echo", args...)
+	default:
+		cmd := exec.Command("/bin/sh", "-c", args)
 
 		output, err := cmd.CombinedOutput()
 		printError(err)
 		printOutput(output)
 	}
-}
-
-func runCmd(argCommand string, args []string) error {
-	fmt.Println(argCommand, args)
-
-	var cmd *exec.Cmd
-	var output []byte
-	var err error
-	switch argCommand {
-	case "echo":
-		echoCmd(args)
-
-	case "sed":
-		cmd = exec.Command("sed", args...)
-
-		output, err = cmd.CombinedOutput()
-		printError(err)
-		printOutput(output)
-
-	case "mkdir":
-		dir := args[0]
-
-		if _, err := os.Stat(dir); os.IsNotExist(err) {
-			cmd = exec.Command("mkdir", args...)
-
-			output, err = cmd.CombinedOutput()
-			printError(err)
-			printOutput(output)
-		}
-
-	default:
-		cmd = exec.Command(argCommand, args...)
-
-		output, err = cmd.CombinedOutput()
-		printError(err)
-		printOutput(output)
-	}
 	return err
-}
-
-func pipe(args []string) {
-	fmt.Println(len(args))
-
-	cmd := exec.Command(args[0], args[1:]...)
-
-	output, err := cmd.CombinedOutput()
-	printError(err)
-	printOutput(output)
 }
 
 func chdirCmd(dir string) error {
@@ -308,7 +220,7 @@ func processCmd(command string) error {
 	switch cmd {
 
 	case "RUN":
-		err = runCmd(argCommand, args)
+		err = runCmd(strings.Join(slcStr[1:], " "))
 
 	case "GO":
 		err = goCmd(argCommand, args)
