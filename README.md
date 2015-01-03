@@ -43,6 +43,7 @@ Cmdfile
 - Cmdfile takes inspiration from Dockerfile
 - Cmdfile tasks must be sequential (no loops or conditionals)
 - Cmdfile is simple and intuitive (no YAML)
+- For debug purposes, each line must contain one command only (abort on error)
 
 encore-cmd uses the excellent Go runtime and even borrows some syntax from Golang os/exec package.
 
