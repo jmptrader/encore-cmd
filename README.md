@@ -33,10 +33,7 @@ Because it is secure and easy to setup.
 Why yet another tool?
 
 - you want a simple and developer-friendly configuration management tool
-- you are not the target market of Ansible, Chef, Puppet, etc
-- you want to configure just a dozen or so machines
 - you love the simplicity and deployment of Go binaries
-- you do not like monolithic software
 - you love the Gopher way of building single-purpose tools
 
 Cmdfile
@@ -46,16 +43,6 @@ Cmdfile
 - Cmdfile takes inspiration from Dockerfile
 - Cmdfile tasks must be sequential (no loops or conditionals)
 - Cmdfile is simple and intuitive (no YAML)
-
-Limitations of cmdfile
-----------------------
-
-- It is not a shell (so no variable declaration and substitution)
-- No pipe commands
-- No backslash (commands must be put on each line)
-- No &&
-- No cd (Instead, use GO chdir directoryname)
-- No eval
 
 encore-cmd uses the excellent Go runtime and even borrows some syntax from Golang os/exec package.
 
