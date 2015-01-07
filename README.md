@@ -1,4 +1,4 @@
-encore-cmd is meant to explore a script-based configuration management using a cmdfile that resembles the syntax of Dockerfile. Though you can do the same with just plain shell script, encore-cmd incorporates Anko script engine so you can do scripting with commands from Go language minus the data types.
+encore-cmd is meant to explore a script-based configuration management tool using a cmdfile that resembles the syntax of Dockerfile. Though you can do the same with just plain shell script, encore-cmd incorporates Anko script engine so you can do scripting with commands from Go language minus the data types.
 
 
 Installation
