@@ -1,13 +1,6 @@
 //License: MIT
 //Author: Gani Mendoza (itjumpstart.wordpress.com)
 
-//This program aims to solve a subset of configuration management tasks
-//Cmdfile is the only argument required for now
-//Cmdfile takes inspiration from Dockerfile
-//Cmdfile tasks must be sequential (no loops or conditionals)
-//Cmdfile tasks are Bash commands and external programs
-//Cmdfile aborts execution on first occurrence of error
-
 package main
 
 import (
@@ -15,6 +8,20 @@ import (
 	"errors"
 	"fmt"
 	"github.com/fatih/color"
+	anko_core "github.com/mattn/anko/builtins"
+	anko_encoding "github.com/mattn/anko/builtins/encoding"
+	anko_flag "github.com/mattn/anko/builtins/flag"
+	anko_io "github.com/mattn/anko/builtins/io"
+	anko_math "github.com/mattn/anko/builtins/math"
+	anko_net "github.com/mattn/anko/builtins/net"
+	anko_os "github.com/mattn/anko/builtins/os"
+	anko_path "github.com/mattn/anko/builtins/path"
+	anko_regexp "github.com/mattn/anko/builtins/regexp"
+	anko_sort "github.com/mattn/anko/builtins/sort"
+	anko_strings "github.com/mattn/anko/builtins/strings"
+	anko_term "github.com/mattn/anko/builtins/term"
+	"github.com/mattn/anko/parser"
+	"github.com/mattn/anko/vm"
 	"log"
 	"os"
 	"os/exec"
@@ -200,6 +207,72 @@ func goCmd(argCommand string, args []string) error {
 	return err
 }
 
+func ankoCmd(filename string) error {
+	fmt.Println("ANKO " + filename)
+
+	if len(filename) == 0 {
+		printError(errors.New("Please specify an Anko script file"))
+		os.Exit(1)
+	}
+
+	file, err := os.Open(filename)
+	if err != nil {
+		printError(err)
+		return err
+	}
+
+	env := vm.NewEnv()
+
+	anko_core.Import(env)
+	anko_flag.Import(env)
+	anko_net.Import(env)
+	anko_encoding.Import(env)
+	anko_os.Import(env)
+	anko_io.Import(env)
+	anko_math.Import(env)
+	anko_path.Import(env)
+	anko_regexp.Import(env)
+	anko_sort.Import(env)
+	anko_strings.Import(env)
+	anko_term.Import(env)
+
+	var ln, code string
+
+	lnScanner := bufio.NewScanner(file)
+	for lnScanner.Scan() {
+
+		ln = lnScanner.Text()
+
+		code = code + ln + "\n"
+
+		if err != nil {
+			break
+			printError(err)
+			return err
+		}
+	}
+
+	scanner := new(parser.Scanner)
+
+	scanner.Init(code)
+
+	stmts, err := parser.Parse(scanner)
+
+	if err != nil {
+		printError(err)
+		return err
+	}
+	_, err = vm.Run(stmts, env)
+	if err != nil {
+		printError(err)
+		return err
+	}
+
+	file.Close()
+
+	return err
+}
+
 func processCmd(command string) error {
 	var err error
 
@@ -237,6 +310,10 @@ func processCmd(command string) error {
 	case "ENV":
 		err = setenvCmd(argCommand, args[0])
 
+	case "ANKO":
+		ankoFilename := argCommand
+		err = ankoCmd(ankoFilename)
+
 	}
 
 	return err
@@ -251,6 +328,7 @@ func main() {
 
 	file, err := os.Open(os.Args[1])
 	if err != nil {
+		printError(err)
 		log.Fatal(err)
 	}
 
