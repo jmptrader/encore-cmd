@@ -7,7 +7,7 @@ import (
 	"bufio"
 	"errors"
 	"fmt"
-	"github.com/fatih/color"
+	"github.com/daviddengcn/go-colortext"
 	anko_core "github.com/mattn/anko/builtins"
 	anko_encoding "github.com/mattn/anko/builtins/encoding"
 	anko_flag "github.com/mattn/anko/builtins/flag"
@@ -32,9 +32,9 @@ import (
 func printError(err error) {
 
 	if err != nil {
-		color.Set(color.FgRed)
+		ct.ChangeColor(ct.Red, false, ct.None, false)
 		os.Stderr.WriteString(fmt.Sprintf("==> ERROR: %s\n", err.Error()))
-		color.Unset()
+		ct.ResetColor()
 	}
 
 }
@@ -42,9 +42,9 @@ func printError(err error) {
 func printOutput(outs []byte) {
 
 	if len(outs) > 0 {
-		color.Set(color.FgGreen)
+		ct.ChangeColor(ct.Green, false, ct.None, false)
 		fmt.Printf("==> OUTPUT: %s\n", string(outs))
-		color.Unset()
+		ct.ResetColor()
 	}
 }
 
