@@ -1,5 +1,7 @@
 #cmdfile is not a shell replacement
 ANKO exec.ank
+ANKO http.ank
+ANKO fib-for.ank
 RUN dpkg --help
 RUN apt-get check
 RUN ls -l
