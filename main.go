@@ -211,8 +211,9 @@ func ankoCmd(filename string) error {
 	fmt.Println("ANKO " + filename)
 
 	if len(filename) == 0 {
-		printError(errors.New("Please specify an Anko script file"))
-		os.Exit(1)
+		err := errors.New("Please specify an Anko script file")
+		printError(err)
+		return err
 	}
 
 	file, err := os.Open(filename)
@@ -327,12 +328,12 @@ func main() {
 	}
 
 	file, err := os.Open(os.Args[1])
+	defer file.Close()
+
 	if err != nil {
 		printError(err)
 		log.Fatal(err)
 	}
-
-	defer file.Close()
 
 	var ln string
 	scanner := bufio.NewScanner(file)
